@@ -6,12 +6,6 @@ final int GAME = 1;
 final int GAMEOVER = 2;
 
 color palette[] = new color[5];
-color black = #003049;
-color red = #d62828;
-color orange = #f77f00;
-color yellow = #fcbf49;
-color white = #eae2b7;
-
 
 int score, highscore;
 
