@@ -16,14 +16,21 @@ void intro() {
     arc(0, 0, 250, 250, TWO_PI/5*i, TWO_PI/5*i+0.95); // Give it equal distance from eachother
   }
   
-  rotate(-2 * spin);
-  stroke(palette[4]);
+  rotate(-2*spin); // Title spinning the opposite way
+  fill(palette[4]);
   if (true) {
     textAlign(CENTER, CENTER);
-    textSize(30);
+    textSize(40);
     text("TROO\nCOLOOR", 0, 0);
   }
   
   popMatrix();
+  
+  if (mousePressed) {
+    mousePressed = false;
+    rand1 = floor(random(0, 5));
+    rand2 = floor(random(0, 5));
+    mode = GAME;
+  }
   
 }
