@@ -1,4 +1,4 @@
-// Incorporate sqrt(abs(cox(t/PI))) to bounce off rotating
+// Incorporate sqrt(abs(cos(t/PI))) to bounce off rotating
 
 float spin = 0;
 
@@ -26,21 +26,21 @@ void intro() {
 
   popMatrix();
 
-
-
-
-
-  fill(palette[2]);
-  stroke(palette[2]);
+  fill(palette[4]);
+  stroke(palette[4]);
   
-  circle(width/2, sqrt(abs(cos((spin/TWO_PI*10))))*height, 50);
+  //circle(width/2, 130, 50);
+  //circle(width/2, height-130, 50);
+  
+  // Take sqrt(abs(cos(t/PI))) to give bouncing, and then map it 
 
   if (mousePressed && dist(mouseX, mouseY, width/2, height/2) < 125) {
     mousePressed = false;
     rand1 = floor(random(0, 5));
     rand2 = floor(random(0, 5));
-    if (floor(random(2)) < 1) rand2 = rand1;
+    if (floor(random(2.3)) < 1) rand2 = rand1;
     timer = 0;
+    maxTime = 300;
     mode = GAME;
   }
 }

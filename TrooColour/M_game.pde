@@ -1,10 +1,24 @@
-int timer, maxTime;
+int timer;
+int maxTime = 300;
 String colour;
 
 void game() {
   background(0);
   timer++;
+  highscore = max(highscore, score);
+  if (timer >= maxTime) mode = GAMEOVER;
   
+  println(timer);
+  
+  strokeWeight(2);
+  fill(palette[4]);
+  rectMode(CORNERS);
+  rect(25, 25, width-25, 50);
+  rectMode(CORNER);
+  strokeWeight(0);
+  fill(palette[0]);
+  rect(26, 26, map(timer, 0, maxTime, 0, width-50), 25);
+  rectMode(CENTER);
   
   
   fill(palette[rand1]); // Decide colour based on random
@@ -39,7 +53,9 @@ void game() {
       if (rand1 == rand2) {
         rand1 = floor(random(0, 5));
         rand2 = floor(random(0, 5));
-        if (floor(random(2)) < 1) rand2 = rand1;
+        score++;
+        maxTime -= 10;
+        if (floor(random(2.3)) < 1) rand2 = rand1;
       } else {
         mode = GAMEOVER;
       } 
@@ -49,7 +65,9 @@ void game() {
       if (rand1 != rand2) {
         rand1 = floor(random(0, 5));
         rand2 = floor(random(0, 5));
-        if (floor(random(2)) < 1) rand2 = rand1;
+        score++;
+        maxTime -= 10;
+        if (floor(random(2.3)) < 1) rand2 = rand1;
       } else {
         mode = GAMEOVER;
       }     
