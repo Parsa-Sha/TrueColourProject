@@ -1,3 +1,13 @@
+/*
+
+To Do:
+
+-Include score + highscore
+-Include button indicators + mouse
+-Make background be assigned to match/not matched
+
+*/
+
 int timer;
 int maxTime = 300;
 String colour;
@@ -7,8 +17,6 @@ void game() {
   timer++;
   highscore = max(highscore, score);
   if (timer >= maxTime) mode = GAMEOVER;
-  
-  println(timer);
   
   strokeWeight(2);
   fill(palette[4]);
