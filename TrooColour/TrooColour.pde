@@ -7,6 +7,7 @@ final int GAMEOVER = 2;
 
 color palette[] = new color[5];
 PFont font;
+PImage bg;
 
 int rand1, rand2;
 int score, highscore;
@@ -18,6 +19,8 @@ void setup() {
   palette[2] = #f77f00; // Orange
   palette[3] = #fcbf49; // Yellow
   palette[4] = #eae2b7; // White/Cream
+  bg = loadImage("data//bg.png");
+  imageMode(CENTER);
 
   font = createFont("data/KungFuMaster-K7vrX.otf", 128);
   textFont(font);

@@ -36,9 +36,8 @@ void intro() {
 
   if (mousePressed && dist(mouseX, mouseY, width/2, height/2) < 125) {
     mousePressed = false;
-    rand1 = floor(random(0, 5));
-    rand2 = floor(random(0, 5));
-    if (floor(random(2.3)) < 1) rand2 = rand1;
+    randReset();
+    score = 0;
     timer = 0;
     maxTime = 300;
     mode = GAME;
