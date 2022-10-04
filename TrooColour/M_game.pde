@@ -18,6 +18,8 @@ void game() {
   timer++;
   highscore = max(highscore, score);
   if (timer >= maxTime) mode = GAMEOVER;
+  intro.pause();
+  
   
   strokeWeight(2);
   fill(palette[3]);
@@ -29,59 +31,76 @@ void game() {
   rect(26, 26, map(timer, 0, maxTime, 0, width-50), 25);
   rectMode(CENTER);
   
-  textSize(30);
+  textSize(40);
   fill(255);
   pushMatrix();
-  translate(100, height/2);
-  rotate(-GALF_PI);
+  translate(50, height/2);
+  rotate(-HALF_PI);
+  text("MATCH", 0, 0);
+  translate(0, 300);
+  rotate(PI);
+  fill(0);
+  text("NO MATCH", 0, 0);
+  popMatrix();
   
-  
-  fill(palette[rand1]); // Decide colour based on random
-
-  switch(rand2) {
-  case 0:
-    colour = "BLUE";
-    break;
-  case 1:
-    colour = "RED";
-    break;
-  case 2:
-    colour = "ORANGE";
-    break;
-  case 3:
-    colour = "YELLOW";
-    break;
-  case 4:
-    colour = "WHITE";
-    break;
-  default:
-    println("ERROR");
-    break;
-  }
+  fill(palette[rand1]); // Decide colour & word based on random
+  colour = words[rand2];
   
   text(colour, width/2, height/2);
 
-  if (keyPressed) {
-    if (key == 'a' || key == 'A') {
+  if (keyPressed) { // Key imput
+    if (key == 'a' || key == 'A' || keyCode == LEFT) {
       keyPressed = false;
       timer = 0;
       if (rand1 == rand2) {
         randReset();
         score++;
         maxTime -= 10;
+        success.rewind();
+        success.play();
       } else {
         mode = GAMEOVER;
       } 
-    } else if (key == 'd' || key == 'D') {
+    } else if (key == 'd' || key == 'D' || keyCode == RIGHT) {
       keyPressed = false;
       timer = 0;
       if (rand1 != rand2) {
         randReset();
         score++;
         maxTime -= 10;
+        success.rewind();
+        success.play();
       } else {
         mode = GAMEOVER;
       }     
+    }
+  }
+  
+  if (mousePressed) { // Mouse input
+    if (mouseX < width/2) {
+      mousePressed = false;
+      timer = 0;
+      if (rand1 == rand2) {
+        randReset();
+        score++;
+        maxTime -= 10;
+        success.rewind();
+        success.play();
+      } else {
+        mode = GAMEOVER;
+      } 
+    } else {
+      mousePressed = false;
+      timer = 0;
+      if (rand1 != rand2) {
+        randReset();
+        score++;
+        maxTime -= 10;
+        success.rewind();
+        success.play();
+      } else {
+        mode = GAMEOVER;
+      }
     }
   }
 }

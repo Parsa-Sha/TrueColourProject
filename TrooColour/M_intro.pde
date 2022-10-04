@@ -6,6 +6,9 @@ void intro() {
   background(0);
   spin += QUARTER_PI/200;
   spin = spin % TWO_PI;
+  intro.play();
+  gameover.rewind();
+  
 
   // Spining Colour Logo
   noFill();
